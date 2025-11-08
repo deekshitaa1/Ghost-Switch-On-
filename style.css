@@ -1,0 +1,154 @@
+/* --- Base Layout --- */
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: #001133;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.5s ease;
+}
+
+.room {
+  position: relative;
+  width: 320px;
+  height: 320px;
+}
+
+/* --- Lamp --- */
+.lamp {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 160px solid transparent;
+  border-right: 160px solid transparent;
+  border-top: 220px solid #fffcb1;
+  transform: translateX(-50%);
+  animation: swing 3s ease-in-out infinite alternate;
+  transform-origin: top center;
+  transition: border-top-color 0.4s ease;
+}
+
+/* --- Switch --- */
+.switch {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  cursor: pointer;
+}
+
+.cord {
+  width: 2px;
+  height: 70px;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+.knob {
+  width: 12px;
+  height: 12px;
+  background-color: #666;
+  border-radius: 50%;
+  margin: 3px auto;
+  transition: background-color 0.3s;
+}
+
+/* --- Ghost --- */
+.ghost {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  width: 90px;
+  height: 110px;
+  border-radius: 45px 45px 15px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: float 2.5s ease-in-out infinite;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+  transition: background-color 0.4s, box-shadow 0.4s;
+}
+
+.face {
+  text-align: center;
+}
+
+.eyes {
+  width: 12px;
+  height: 12px;
+  background-color: black;
+  border-radius: 50%;
+  margin: 6px auto;
+  box-shadow: 28px 0 0 black;
+}
+
+.mouth {
+  width: 28px;
+  height: 25px;
+  background-color: black;
+  border-radius: 0 0 50% 50%;
+  margin: 10px auto;
+  position: relative;
+}
+
+.tongue {
+  width: 14px;
+  height: 14px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* --- Text --- */
+.text {
+  position: absolute;
+  right: 20px;
+  top: 140px;
+  color: white;
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(255,255,255,0.7);
+  transition: color 0.4s, text-shadow 0.4s;
+}
+
+/* --- Animations --- */
+@keyframes swing {
+  0% { transform: translateX(-50%) rotate(-10deg); }
+  100% { transform: translateX(-50%) rotate(10deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -10px); }
+}
+
+/* --- Light OFF Mode --- */
+.off {
+  background-color: #000010;
+}
+
+.off .lamp {
+  border-top-color: #111;
+}
+
+.off .ghost {
+  background-color: #222;
+  box-shadow: none;
+}
+
+.off .text {
+  color: #666;
+  text-shadow: none;
+}
+
+.off .knob {
+  background-color: #aaa;
+}
